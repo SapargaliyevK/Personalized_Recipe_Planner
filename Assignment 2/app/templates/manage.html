@@ -1,0 +1,17 @@
+/personalized-recipe-planner/app/templates/manage.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your Recipe Plan</h2>
+{% if user_data.recipes %}
+    <ul>
+    {% for recipe in user_data.recipes %}
+        <li>{{ recipe.name }}: {{ recipe.ingredients }}</li>
+    {% endfor %}
+    </ul>
+    <p>Meals per week: {{ user_data.preferences.meals_per_week }}</p>
+{% else %}
+    <p>No recipes entered yet. Please add some recipes.</p>
+{% endif %}
+<a href="{{ url_for('recipes') }}">Add More Recipes</a>
+{% endblock %}

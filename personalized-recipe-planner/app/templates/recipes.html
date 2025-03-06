@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="container">
+        <h1>Enter Your Recipe</h1>
+        <form action="{{ url_for('recipes') }}" method="post">
+            <label for="recipe_name">Recipe Name:</label>
+            <input type="text" id="recipe_name" name="recipe_name" required>
+
+            <label for="ingredients">Ingredients:</label>
+            <input type="text" id="ingredients" name="ingredients" required>
+
+            <input type="submit" value="Add Recipe">
+        </form>
+        <a href="{{ url_for('preferences') }}">Back to Preferences</a>
+        <hr>
+        <h2>Your Recipes</h2>
+        <ul>
+            {% for recipe in recipes %}
+                <li>{{ recipe.name }}: {{ recipe.ingredients }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

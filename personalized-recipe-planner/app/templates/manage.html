@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Recipe Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container">
+        <h1>Your Personalized Recipe Plan</h1>
+        <div class="recipe-plan">
+            {% if recipe_plan %}
+                <ul>
+                    {% for recipe in recipe_plan %}
+                        <li>{{ recipe.name }} - Ingredients: {{ recipe.ingredients }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No recipes found. Please enter your preferences and recipes.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('preferences') }}">Edit Preferences</a>
+        <a href="{{ url_for('recipes') }}">Add Recipes</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

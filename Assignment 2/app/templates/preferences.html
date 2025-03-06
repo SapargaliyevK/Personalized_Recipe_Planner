@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Set Your Preferences</h2>
+<form action="{{ url_for('preferences') }}" method="post">
+    <label for="dietary_restrictions">Dietary Restrictions:</label>
+    <input type="text" id="dietary_restrictions" name="dietary_restrictions" required>
+    
+    <label for="favorite_cuisine">Favorite Cuisine:</label>
+    <input type="text" id="favorite_cuisine" name="favorite_cuisine" required>
+    
+    <label for="meals_per_week">Number of Meals per Week:</label>
+    <input type="number" id="meals_per_week" name="meals_per_week" required>
+    
+    <input type="submit" value="Save Preferences">
+</form>
+{% endblock %}
